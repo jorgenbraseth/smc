@@ -136,3 +136,4 @@ typings/
 .serverless
 
 /smc.iml
+/backend/database.sqlite
