@@ -135,3 +135,4 @@ typings/
 # Serverless directories
 .serverless
 
+/smc.iml

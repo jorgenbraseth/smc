@@ -1,0 +1,18 @@
+button {
+    width: 30%;
+    font-size: 2em;
+    margin: .3em;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    font-family: helvetica, sans-serif;
+    font-weight: bold;
+    padding: 0.4em;
+    cursor: pointer;
+    border-radius: .2em;
+}
+
+button[disabled] {
+    background-color: gray !important;
+    color: #aaa !important;
+    cursor: default;
+}

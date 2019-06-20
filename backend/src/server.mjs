@@ -13,11 +13,10 @@ app.use(function (req, res, next) {
     next();
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.get('/shapes', async (req, res, next) => {
     try {
-        // const shapes = await db.all('SELECT * FROM Shapes LIMIT 10'); // <=
         DB.getAll().then((body) => res.send(body));
     } catch (err) {
         next(err);
@@ -41,6 +40,14 @@ app.post('/_intersect', async (req, res, next) => {
         let u = Turf.intersect(f1, f2);
         await DB.replace(req.body.shapes, u);
         res.send(u);
+    } catch (err) {
+        next(err);
+    }
+});
+app.post('/_reset', async (req, res, next) => {
+    try {
+        await DB.init();
+        res.send();
     } catch (err) {
         next(err);
     }

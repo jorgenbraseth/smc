@@ -35,14 +35,10 @@ const DB = {
     replace: (ids, replacement) => {
         let deletes = [];
         ids.forEach((toDelete) => {
-            console.log(ids);
-            console.log(toDelete);
             deletes.push(db.run('DELETE FROM SHAPES WHERE id=?', toDelete));
         });
         delete replacement.properties.id;
         const jsonString = JSON.stringify(replacement);
-        console.log(jsonString);
-
         return Promise.all(deletes).then(() => {
             return db.run('INSERT INTO SHAPES( geojson ) VALUES ( ? )', [jsonString]);
         });
